@@ -1,11 +1,9 @@
 # Eval Integrity Report
 
-> **SAMPLE / SALES COLLATERAL.** This is a *real* audit of a *public* dataset, produced to
-> demonstrate the Eval Integrity service. Every number below was recomputed from raw data
-> downloaded from the source cited in Appendix A. No client commissioned it and no data was
-> fabricated. It is free to share.
+> A real measurement audit of a public dataset, recomputed from raw data downloaded from the
+> source cited in Appendix A. No data was fabricated. Free to share.
 >
-> This is a **companion** to the MT-Bench sample report. Where the MT-Bench audit demonstrates
+> This is a **companion** to the MT-Bench report. Where the MT-Bench audit demonstrates
 > the *correlational* judge-bias battery, this one demonstrates two further disciplines: (1) a
 > **causal, controlled** confirmation of the one finding that survives — and (2) the auditor
 > **refusing to certify two biases the raw battery flags** because they are not defensible on

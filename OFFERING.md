@@ -105,6 +105,16 @@ that data is the client's responsibility and is not billed by us.
 
 ---
 
+## Get in touch
+
+Have a number that carries weight — a fundraise metric, a model-selection decision, a
+benchmark you're about to publish? **Email Ilpo Väätäinen — [Ilpo.vaatainen@hotmail.com](mailto:Ilpo.vaatainen@hotmail.com)** with the benchmark, leaderboard, or claim you want checked, and I'll tell you whether it's a quick single-claim spot audit or a full suite. No call required to start — just send the number.
+
+Public worked examples of the method: the [sample reports](reports/) and the findings filed
+upstream on the benchmarks' own trackers ([RewardBench #267](https://github.com/allenai/reward-bench/issues/267)/[#268](https://github.com/allenai/reward-bench/issues/268), [BigCodeBench #121](https://github.com/bigcode-project/bigcodebench/issues/121)).
+
+---
+
 ## Why independent, and why this auditor
 
 The value of an audit is that it can return an unwelcome answer. This one is built to.

@@ -10,6 +10,8 @@ degenerate ground truth, contamination, underpowered samples. From the outside â
 from the inside â€” an inflated number and a real one look identical. This project tells them
 apart, and does so with controls whose verdicts are **derived structurally**, not asserted.
 
+![eval-integrity CLI producing a red/yellow/green scorecard](docs/assets/eval_scan_demo.gif)
+
 Every report here is a **real audit of a public dataset**, recomputed from raw data, free to
 share. They double as worked examples of the method described in [`OFFERING.md`](OFFERING.md).
 

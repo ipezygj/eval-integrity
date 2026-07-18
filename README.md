@@ -24,6 +24,7 @@ share. They double as worked examples of the method described in [`OFFERING.md`]
 | [RewardBench length degeneracy](reports/rewardbench-length-degeneracy.md) | RewardBench v1 gold pairs | two subsets are length-degenerate — a 0-parameter "pick the longer answer" baseline scores **100%** | gold-label degeneracy on a live leaderboard |
 | [RewardBench 2 Focus](reports/rewardbench2-focus-length.md) | RewardBench 2 gold pairs | v2 fixed the aggregate, but `Focus` inverted it — "pick the *shortest*" scores **52.7%** (2.1× chance); a causal control confirms it's length | causal length-confound isolation |
 | [Leaderboard significance tiers](reports/leaderboard-significance-tiers.md) | BigCodeBench · EvalPlus · Open LLM Leaderboard | small-N leaderboards can't rank their tops — **55 of 199 models tied with #1 on BigCodeBench-Hard**; a clean sample-size gradient (large-N is separable) | statistical power / two-proportion significance |
+| [GPQA ranking underpowered](reports/gpqa-power-underpowered.md) | Open LLM Leaderboard v2 GPQA | the #1-vs-#2 gap (+3.5pp) that sets the top rank is **not significant at any plausible GPQA n** (p 0.07–0.48; MDE ~14pp; needs ~2,820/arm) | power robustness across sample-size assumptions |
 
 Several findings are filed as public issues on the benchmarks' own trackers:
 **[allenai/reward-bench#267](https://github.com/allenai/reward-bench/issues/267)** (v1 length),

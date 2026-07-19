@@ -17,10 +17,15 @@ import math
 import urllib.request
 import sys
 
-HF = ("https://datasets-server.huggingface.co/rows?dataset=princeton-nlp/SWE-bench_Verified"
+# split: "verified" (n=500, default) or "lite" (n=300) — same method, both reproducible
+SPLIT = sys.argv[1] if len(sys.argv) > 1 else "verified"
+_DS = {"verified": ("princeton-nlp/SWE-bench_Verified", 500),
+       "lite": ("princeton-nlp/SWE-bench_Lite", 300)}[SPLIT]
+HF = (f"https://datasets-server.huggingface.co/rows?dataset={_DS[0]}"
       "&config=default&split=test")
-LIST = "https://api.github.com/repos/swe-bench/experiments/contents/evaluation/verified"
-RAW = "https://raw.githubusercontent.com/swe-bench/experiments/main/evaluation/verified/{}/results/results.json"
+LIST = f"https://api.github.com/repos/swe-bench/experiments/contents/evaluation/{SPLIT}"
+RAW = ("https://raw.githubusercontent.com/swe-bench/experiments/main/evaluation/"
+       + SPLIT + "/{}/results/results.json")
 
 
 def get(url):
@@ -43,7 +48,7 @@ def mcnemar(a, b):
 def main():
     # 1) canonical 500 Verified instance IDs
     IDS = []
-    for off in range(0, 500, 100):
+    for off in range(0, _DS[1], 100):
         d = get(f"{HF}&offset={off}&length=100")
         IDS += [row["row"]["instance_id"] for row in d["rows"]]
     idset = set(IDS)
@@ -79,14 +84,14 @@ def main():
         s2, res2 = ranked[i]
         B, C, stat, p = mcnemar(v1, vec(res2))
         sep = p < 0.05
-        print(f"  #1 vs #{i+1:2} ({len(res2 & idset)/5:.1f}%): disc {B}/{C}  p={p:.3f}  "
+        print(f"  #1 vs #{i+1:2} ({len(res2 & idset)/len(IDS)*100:.1f}%): disc {B}/{C}  p={p:.3f}  "
               f"{'** SEPARATES **' if sep else 'TIED'}")
         if sep:
             break
         tied += 1
 
     print("\n" + "=" * 66)
-    print(f"REPRODUCED: the top {tied} SWE-bench Verified submissions are one statistical "
+    print(f"REPRODUCED: the top {tied} SWE-bench {SPLIT} submissions are one statistical "
           f"tie; #1 first separates at rank {tied+1}.")
     return 0
 

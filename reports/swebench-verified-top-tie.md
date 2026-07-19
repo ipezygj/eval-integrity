@@ -31,6 +31,10 @@ Every one of ranks 2–8 is within noise of #1 (all p ≥ 0.11); #1 first become
 
 The control passes where the data supports it: the benchmark **does** have the power to separate models — #1 pulls clear of the field by rank 9, and the gaps widen further down. SWE-bench Verified is a well-powered benchmark for distinguishing *dissimilar* agents. The issue is narrow and specific: the leaders are now packed into a few points near the top of a 500-item test, and 500 items cannot resolve that packing into an order. "Ranked #1 on SWE-bench Verified" and "ranked #6" are, on this evidence, the same result.
 
+## The same effect appears on SWE-bench Lite
+
+Running the identical paired test on the **SWE-bench Lite** leaderboard (n=300) among its recent submissions: the **top 4 are tied with #1** (60.3%→56.7%, McNemar p up to 1.000), and #1 first separates at rank 5 (55.0%, p=0.041). Lite's recent field is weaker and more spread than Verified's (fewer frontier agents still report Lite), so its top tier is smaller — but the pattern is the same: a few-point cluster at the top of a few-hundred-item benchmark is one statistical group. The compression is worst exactly where the frontier piles up (Verified), which is where the ranks are quoted most.
+
 ## Honest caveats
 
 - **The tie is a lower bound on the uncertainty.** McNemar treats each submission's single run as fixed, but coding agents are stochastic — re-running the same agent moves several instances. Run-to-run variance is *additional* noise on top of what's tested here, so accounting for it would only make more ranks tie, never fewer.
@@ -43,4 +47,4 @@ Show a confidence interval or a significance-grouped ordering (tiers) at the top
 
 ## Reproduce
 
-[`reproduce/reproduce_swebench_verified_toptie.py`](../reproduce/reproduce_swebench_verified_toptie.py) — pure stdlib, deterministic, no model inference. Downloads the canonical 500 instance IDs and each public `resolved` list from `swe-bench/experiments`, builds pass/fail vectors, and runs paired McNemar. Prints the tables above and `REPRODUCED: the top 8 ... are one statistical tie; #1 first separates at rank 9.`
+[`reproduce/reproduce_swebench_verified_toptie.py`](../reproduce/reproduce_swebench_verified_toptie.py) — pure stdlib, deterministic, no model inference. Downloads the canonical 500 instance IDs and each public `resolved` list from `swe-bench/experiments`, builds pass/fail vectors, and runs paired McNemar. Pass `lite` as an argument to reproduce the SWE-bench Lite result. Prints the tables above and `REPRODUCED: the top 8 ... are one statistical tie; #1 first separates at rank 9.`

@@ -31,9 +31,14 @@ Every one of ranks 2–8 is within noise of #1 (all p ≥ 0.11); #1 first become
 
 The control passes where the data supports it: the benchmark **does** have the power to separate models — #1 pulls clear of the field by rank 9, and the gaps widen further down. SWE-bench Verified is a well-powered benchmark for distinguishing *dissimilar* agents. The issue is narrow and specific: the leaders are now packed into a few points near the top of a 500-item test, and 500 items cannot resolve that packing into an order. "Ranked #1 on SWE-bench Verified" and "ranked #6" are, on this evidence, the same result.
 
-## The same effect appears on SWE-bench Lite
+## The same effect appears across all three SWE-bench leaderboards
 
-Running the identical paired test on the **SWE-bench Lite** leaderboard (n=300) among its recent submissions: the **top 4 are tied with #1** (60.3%→56.7%, McNemar p up to 1.000), and #1 first separates at rank 5 (55.0%, p=0.041). Lite's recent field is weaker and more spread than Verified's (fewer frontier agents still report Lite), so its top tier is smaller — but the pattern is the same: a few-point cluster at the top of a few-hundred-item benchmark is one statistical group. The compression is worst exactly where the frontier piles up (Verified), which is where the ranks are quoted most.
+Running the identical paired test on the other two SWE-bench boards:
+
+- **SWE-bench Lite** (n=300): the **top 4 are tied with #1** (60.3%→56.7%, McNemar p up to 1.000); #1 first separates at rank 5 (55.0%, p=0.041).
+- **SWE-bench Multimodal** (n=510, visual bug-fixing): the **top 5 are tied with #1** (36.5%→34.3%, p up to 0.885); #1 first separates at rank 6 (31.8%, p=0.003).
+
+Three different task sets, three different accuracy regimes (≈79% / ≈60% / ≈36%), same result: a few-point cluster at the top of a few-hundred-item benchmark is one statistical group. The tie is smallest where the field is most spread (Lite) and the leaders least compressed; it is worst on Verified, where the frontier piles up near the ceiling — and Verified is the number quoted most in launch posts.
 
 ## Honest caveats
 
@@ -47,4 +52,4 @@ Show a confidence interval or a significance-grouped ordering (tiers) at the top
 
 ## Reproduce
 
-[`reproduce/reproduce_swebench_verified_toptie.py`](../reproduce/reproduce_swebench_verified_toptie.py) — pure stdlib, deterministic, no model inference. Downloads the canonical 500 instance IDs and each public `resolved` list from `swe-bench/experiments`, builds pass/fail vectors, and runs paired McNemar. Pass `lite` as an argument to reproduce the SWE-bench Lite result. Prints the tables above and `REPRODUCED: the top 8 ... are one statistical tie; #1 first separates at rank 9.`
+[`reproduce/reproduce_swebench_verified_toptie.py`](../reproduce/reproduce_swebench_verified_toptie.py) — pure stdlib, deterministic, no model inference. Downloads the canonical 500 instance IDs and each public `resolved` list from `swe-bench/experiments`, builds pass/fail vectors, and runs paired McNemar. Pass `lite` or `multimodal` as an argument to reproduce those boards. Prints the tables above and `REPRODUCED: the top 8 ... are one statistical tie; #1 first separates at rank 9.`

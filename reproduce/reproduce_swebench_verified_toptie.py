@@ -20,7 +20,8 @@ import sys
 # split: "verified" (n=500, default) or "lite" (n=300) — same method, both reproducible
 SPLIT = sys.argv[1] if len(sys.argv) > 1 else "verified"
 _DS = {"verified": ("princeton-nlp/SWE-bench_Verified", 500),
-       "lite": ("princeton-nlp/SWE-bench_Lite", 300)}[SPLIT]
+       "lite": ("princeton-nlp/SWE-bench_Lite", 300),
+       "multimodal": ("princeton-nlp/SWE-bench_Multimodal", 510)}[SPLIT]
 HF = (f"https://datasets-server.huggingface.co/rows?dataset={_DS[0]}"
       "&config=default&split=test")
 LIST = f"https://api.github.com/repos/swe-bench/experiments/contents/evaluation/{SPLIT}"

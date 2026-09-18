@@ -50,7 +50,7 @@ with them.
 `Daemontatox/Llama3.3-70B-CogniLink` as the GPQA leader with a 3.69pp lead. That
 model ranks seventh of 4,576. The ranking had been taken from roughly the first
 tenth of the dataset in its native order and never sorted against the whole. The
-true top gap is 0.16pp at p = 0.94, so the conclusion is stronger than before,
+true top gap is 0.17pp at p = 0.93, so the conclusion is stronger than before,
 but a named author's model was published as the board's best when it is not.
 
 **The RewardBench report audited the wrong pairs, in all four categories.** The
@@ -79,6 +79,12 @@ them; the RewardBench headline is a weighted average of section scores, not a
 pooled 2,985-item accuracy; and on this site the IFEval claim contradicted the
 report it summarised, with the data on the report's side, while the MMLU-Pro
 uniformity claim holds for the ten-option items rather than the full pull.
+
+One thing about how this happened is worth recording. The GPQA error had already
+been found and corrected on 17 September, on the published page version of that
+audit. The correction never travelled to this report, to the repository, or to
+the deposit, because nothing connects them but memory. A fix applied to one
+surface is not a fix.
 
 Nothing in the measurements changed. Every hash, every item count, every McNemar
 and bootstrap that was recomputed came back identical.

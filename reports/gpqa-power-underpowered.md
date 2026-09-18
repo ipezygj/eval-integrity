@@ -24,7 +24,7 @@
 
 | # | Claim (as implied by the leaderboard) | Metric | Values | Source |
 |---|---|---|---|---|
-| C1 | The top-ranked model outranks the second on GPQA — its higher GPQA score reflects genuinely stronger graduate-level reasoning. | GPQA accuracy | rank 1 = **47.06%**, rank 2 = **46.90%** (a **+0.16pp** lead that sets the top rank) | `open-llm-leaderboard/contents` (HF), field `GPQA Raw`, all 4,576 rows |
+| C1 | The top-ranked model outranks the second on GPQA — its higher GPQA score reflects genuinely stronger graduate-level reasoning. | GPQA accuracy | rank 1 = **47.06%** (561/1,192), rank 2 = **46.90%** (559/1,192) — a **+0.17pp** lead that sets the top rank | `open-llm-leaderboard/contents` (HF), field `GPQA Raw`, all 4,576 rows |
 
 ---
 
@@ -32,8 +32,8 @@
 
 **Overall: UNDERPOWERED**
 
-The gap that determines the top ranking (**+0.16pp**) is **not statistically
-distinguishable from noise** at any plausible GPQA sample size (p = 0.94 at n = 1,192). The ranking is real on the page;
+The gap that determines the top ranking (**+0.17pp**) is **not statistically
+distinguishable from noise**: at the leaderboard's own n = 1,192 the two-proportion p is **0.93**. The ranking is real on the page;
 its *statistical basis* is not.
 
 ---
@@ -47,7 +47,7 @@ combining Main/Diamond/Extended subsets, is on the order of ~1,200). At those si
 percentage points is inside the sampling noise. The table below audits a **3.69pp** gap as a
 two-proportion comparison across every plausible GPQA `n`. That gap is not the top-rank gap — see the
 correction note at the end — but it is retained here because it is the *harder* case: the real
-top-rank gap is 0.16pp and fails to separate by a wider margin at every `n` in the table.
+top-rank gap is 0.17pp and fails to separate by a wider margin at every `n` in the table.
 
 | GPQA n | observed diff | p-value | MDE at this n | verdict |
 |---:|---:|---:|---:|---|
@@ -87,8 +87,8 @@ rank 1 `Steelskull/L3.3-MS-Nevoria-70b` = 0.4706, rank 2 `Steelskull/L3.3-Nevori
 `EVA-UNIT-01/EVA-Qwen2.5-72B-v0.2`. That model ranks **seventh**: six models score above it, and the
 numbers quoted as "the top ~12" were the first rows of the dataset in its native order rather than the
 top of the ranking. The pull covered roughly a tenth of the leaderboard and was never sorted against
-the whole. The report's conclusion is unchanged and in fact stronger — the true top gap is 0.16pp,
-p = 0.94 — but every model name and number under it was wrong, and one of them presented a named
+the whole. The report's conclusion is unchanged and in fact stronger — the true top gap is 0.17pp,
+p = 0.93 — but every model name and number under it was wrong, and one of them presented a named
 author's model as the leaderboard's best on GPQA when it is not.
 
 **Method:** successes = round(accuracy × n) per arm; two-proportion z-test (pooled) + 95% CI on the

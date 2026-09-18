@@ -18,9 +18,9 @@ Running the check across code and reasoning leaderboards, the "can it rank the t
 | **BigCodeBench-Hard** (complete) | 148 | Gemini-Exp-1206 (40.5%) | **55 of 199** — a quarter of the board |
 | **BigCodeBench-Hard** (instruct) | 148 | o3-mini (33.1%) | **62 of 173** |
 | HumanEval+ | 164 | O1 Preview (89.0%) | **11 frontier models** — O1, GPT-4o, Claude 3.5, DeepSeek-V3, Qwen2.5-Coder … |
-| MBPP+ | 378 | O1 Preview (80.2%) | ~10 |
+| MBPP+ | 378 | O1 Preview (80.2%) | 6 |
 | Open LLM · IFEval | 541 / 834 | Llama-3.3-70B (90.0%) | clear #1, then **#2–#15 one tier** |
-| Open LLM · MUSR | 756 | calme-3.2 (60.2%) | top-15 all one tier |
+| Open LLM · MUSR | 756 | calme-3.2 (60.2%) | 8 |
 | BigCodeBench-Full | 1,140 | Gemini-Exp-1206 (62.4%) | ~12 |
 | Open LLM · MATH Lvl 5 | 1,324 | AceMath-72B (71.5%) | clear #1, then a tier |
 | Open LLM · BBH | ~6,511 | — | #1 separable |

@@ -95,8 +95,10 @@ separates a real finding from a hasty "leaderboard is length-biased" claim.
   the Chat category for any length-preferring model and cannot rank quality among strong ones.
 - **Fix (matches the authors' own `alpacaeval-length` approach):** length-match or
   length-stratify the chosen/rejected pairs, or report a length-controlled Chat accuracy
-  alongside the raw one. (RewardBench 2 rebuilt these subsets — this finding is the v1
-  quantification of exactly that motivation, and v1 remains widely cited.)
+  alongside the raw one. (RewardBench 2 has no Chat domain and no AlpacaEval-derived subsets;
+  its paper describes Math, Safety and Focus as new datasets "inspired by improving upon" v1's
+  Math, Safety and Chat-Hard. An earlier version of this line said v2 "rebuilt these subsets",
+  which overstates the connection. v1 remains widely cited.)
 
 ## 4. Honesty boundaries
 
@@ -129,4 +131,6 @@ separates a real finding from a hasty "leaderboard is length-biased" claim.
 
 **Expected result:** overall length baseline 42.6%; `alpacaeval-easy` and `alpacaeval-hard`
 = 100.0%; Skywork 97.0% / 94.7% on the same two subsets; and the length baseline < 12% on
-`math-prm` / `llmbar-adver-neighbor` / `refusals-dangerous` while the models exceed 87% there.
+`math-prm` / `llmbar-adver-neighbor` / `refusals-dangerous`, while Skywork reaches 87.3 / 100.0 /
+97.0 there. OffsetBias does not: it scores 76.1 on `llmbar-adver-neighbor` and 82.0 on
+`refusals-dangerous`, so "the models exceed 87%" held for one of the two, not both.

@@ -11,7 +11,7 @@ A leaderboard that shows a strict order is making a claim: #1 is measurably ahea
 
 ## Result
 
-**On its own sample, RewardBench cannot separate the displayed #1 from #2 in any of the four categories.**
+**On its own sample, RewardBench cannot separate the top pair in three of its four categories.**
 
 | Category | #1 (acc) | #2 (acc) | discordant b / c | McNemar p | Rank supported? |
 |---|---|---|---|---|---|
@@ -22,7 +22,8 @@ A leaderboard that shows a strict order is making a claim: #1 is measurably ahea
 
 ## This is specific, not blanket skepticism
 
-The point of the control is that it *passes* where the data supports the ranking. The **aggregate** RewardBench ranking has the sample size to discriminate: the overall #1 (Skywork-Gemma-2-27B) beats #2 at **p = 0.048** and #3 at **p = 0.008**, and the overall top-10 spans **7 distinct statistical tiers** with only three adjacent ties. The ~2,985-item headline metric separates most models fine. It is only the **per-category** sub-rankings — measured on 358–1,431 near-ceiling items — that their smaller samples cannot support. So this is not "RewardBench is a bad benchmark"; the headline is sound, and the per-category point-ranks are simply presented with more precision than their samples carry.
+The point of the control is that it *passes* where the data supports the ranking. The **aggregate** RewardBench ranking has the sample size to discriminate: the overall #1 (Skywork-Gemma-2-27B) beats #2 at **p = 0.048** and #3 at **p = 0.008**, and the overall top-10 spans **7 distinct statistical tiers** with only three adjacent ties. The headline metric — a weighted average of section scores rather than a pooled 2,985-item
+accuracy — separates most models fine. It is only the **per-category** sub-rankings — measured on 358–1,431 near-ceiling items — that their smaller samples cannot support. So this is not "RewardBench is a bad benchmark"; the headline is sound, and the per-category point-ranks are simply presented with more precision than their samples carry.
 
 ## The pattern partially recurs on RewardBench 2
 

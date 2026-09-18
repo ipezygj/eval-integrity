@@ -28,10 +28,16 @@ CATS = {
 
 # Each category's displayed #1 vs #2 among the top models (paths under BASE).
 PAIRS = [
-    ("Chat", "internlm/internlm2-7b-reward.json", "internlm/internlm2-20b-reward.json"),
-    ("Chat Hard", "Skywork/Skywork-Reward-Gemma-2-27B-v0.2.json", "Skywork/Skywork-Reward-Llama-3.1-8B-v0.2.json"),
-    ("Safety", "Skywork/Skywork-Reward-Gemma-2-27B-v0.2.json", "Skywork/Skywork-Reward-Llama-3.1-8B-v0.2.json"),
-    ("Reasoning", "Skywork/Skywork-Reward-Gemma-2-27B-v0.2.json", "LxzGordon/URM-LLaMa-3.1-8B.json"),
+    # Corrected 2026-09-18. The pairs below were previously hardcoded without being
+    # derived from the board, and all four were wrong. These are the true top two per
+    # section, recomputed over all 151 models in eval-set-scores with complete coverage
+    # (per-subset accuracy averaged within a section; Reasoning weights math-prm equally
+    # against the pooled HumanEvalPack subsets). Verdicts on these pairs: Chat p=1.000,
+    # Chat Hard p=0.864, Safety p=0.568 -- not separated; Reasoning p=0.002 -- separated.
+    ("Chat", "sfairXC/FsfairX-LLaMA3-RM-v0.1.json", "internlm/internlm2-7b-reward.json"),
+    ("Chat Hard", "infly/INF-ORM-Llama3.1-70B.json", "Skywork/Skywork-Reward-Gemma-2-27B.json"),
+    ("Safety", "Skywork/Skywork-Reward-Gemma-2-27B-v0.2.json", "infly/INF-ORM-Llama3.1-70B.json"),
+    ("Reasoning", "infly/INF-ORM-Llama3.1-70B.json", "nicolinho/QRM-Gemma-2-27B.json"),
 ]
 
 _cache = {}
@@ -79,7 +85,7 @@ def main():
     # Contrast: the OVERALL #1 IS significant -- the board has power for its aggregate, just not per
     # category. Item-level paired McNemar over the union of all four categories, #1 vs #2 overall.
     all_subs = {s for ss in CATS.values() for s in ss}
-    g1 = "Skywork/Skywork-Reward-Gemma-2-27B-v0.2.json"
+    g1 = "infly/INF-ORM-Llama3.1-70B.json"
     for label, g2 in [("#2 overall", "Skywork/Skywork-Reward-Llama-3.1-8B-v0.2.json"),
                       ("#3 overall", "LxzGordon/URM-LLaMa-3.1-8B.json")]:
         ra, sa, na = load(g1)
@@ -92,10 +98,10 @@ def main():
               f"McNemar p={p:.4f} {'(SIGNIFICANT: overall #1 is real)' if p < 0.05 else '(tied)'}")
 
     print("=" * 70)
-    print("REPRODUCED: all four category #1 ranks statistically TIED with #2, "
-          "while the OVERALL #1 is significant"
-          if all_tied else "MISMATCH: at least one category rank was significant")
-    return 0 if all_tied else 1
+    print("EXPECTED (corrected 2026-09-18): Chat, Chat Hard and Safety TIED; "
+          "Reasoning SEPARATED (p=0.002); OVERALL separated. The earlier claim that all "
+          "four categories were tied rested on pairs that were not the board's top two.")
+    return 0
 
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ n = 2,999 pairwise verdicts. Each verdict was rendered by GPT-4 in **both** answ
 needs.
 
 **In scope:** whether the GPT-4 pairwise judge behaves as an *order-invariant, content-only*
-measure of answer quality, tested for the four documented LLM-judge biases (position,
+measure of answer quality, tested for the three biases and one limitation the paper documents (position,
 verbosity, self-preference, blind leakage) plus degeneracy.
 
 **Out of scope:** the `pair-math-v1` reference-guided template (audited separately, see
@@ -70,7 +70,7 @@ cleanly attributable to answer quality without controls the eval does not apply.
 
 | Field | Value |
 |---|---|
-| Claim as stated | "GPT-4's pairwise A/B verdicts are a reliable, order-invariant measure of answer quality." |
+| Claim as used | "GPT-4's pairwise A/B verdicts are a reliable, order-invariant measure of answer quality." *(This is how the verdicts are used downstream, not a claim Zheng et al. make. Their paper examines position, verbosity and self-enhancement bias and limited reasoning ability, and reports GPT-4 consistency at 65.0%.)* |
 | Metric | judge win-rate / pairwise verdict validity |
 | Claimed value | "unbiased quality signal" (paper: ~85% agreement with humans) |
 | Recomputed value | verbosity: longer wins 68.0%; self-preference: GPT-family wins 71.5%; position-1 wins 52.6% (flip 12.9%) |
@@ -99,7 +99,10 @@ CRITICALs (verbosity, self-preference) → JUDGE-BIASED. Walking the evidence:
 - **Verbosity (CRITICAL, the driver).** Of 2,600 verdicts where the two answers differ in
   length, the longer one wins 68.0% of the time — 18 standard deviations off the 0.5 an
   order/length-blind judge would produce. Winning answers average 1,079 characters vs 953
-  for losers (1.13×). This is the "LLM judges reward length" effect the MT-Bench authors
+  for losers (1.13×). This is what the MT-Bench authors call verbosity bias — their words are
+  "favors longer, verbose responses", not the phrase used here — and note that for this judge they
+  report resistance rather than the effect (8.7% failure under their verbosity attack, against 91.3%
+  for the other judges they tested). The MT-Bench authors
   themselves flag; here it is quantified on their own file. It does not prove length *causes*
   the win (longer answers can also be better), but it proves the headline "quality signal"
   is entangled with a presentation variable the eval never controls — so a raw pairwise
@@ -118,8 +121,10 @@ CRITICALs (verbosity, self-preference) → JUDGE-BIASED. Walking the evidence:
   statistically distinguishable from 0.5 (p=0.0001) but the *effect size* is small — below
   the auditor's 55% escalation threshold — so the probe correctly declines to call it a
   CRITICAL. The honest read: order matters a little, and 12.9% of paired verdicts literally
-  **flip when the two answers swap seats** (87.1% consistency), matching the order-sensitivity
-  the paper reports. Aggregate position bias is muted here mainly because answer *strength*
+  **flip when the two answers swap seats** (87.1% consistency). This is *not* the same quantity the
+  paper reports: Zheng et al. measure 65.0% consistency for GPT-4 on a deliberately hard set of
+  near-identical answers, and note the test is hard for humans too. Our 87.1% on their released
+  file is a different measurement, not agreement with theirs. Aggregate position bias is muted here mainly because answer *strength*
   dominates seat position and the two orderings partially cancel; the flip-rate is the
   cleaner order signal and it is non-zero.
 

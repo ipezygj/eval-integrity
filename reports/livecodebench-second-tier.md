@@ -25,7 +25,10 @@ Immediately below the real #1, five distinct leaderboard positions are one stati
 | 6 | Gemini-2.5-Pro-05-06 | 82.75 | 0.050 |
 | **7** | OpenReasoning-Nemotron-32B | 80.96 | **<0.001 (tier 3)** |
 
-Ranks 2–6 — O3, O4-Mini (Medium), DeepSeek-R1, and both Gemini-2.5-Pro snapshots — are mutually indistinguishable (all #2-vs-#k p ≥ 0.05). The whole top 10 collapses to just **three statistical tiers**: {#1}, {#2–#6}, {#7–#10}. So "ranked 2nd" and "ranked 6th" on LiveCodeBench code-gen are, on this evidence, the same result — five labs separated on the board by differences their shared 1,055-problem sample cannot establish.
+Ranks 2–5 are mutually indistinguishable. Rank 6, `Gemini-2.5-Pro-05-06`, sits **exactly on the
+threshold**: the p-value printed as 0.050 in the table above is below 0.05 before rounding, so under
+the stated rule it separates and the tier is four models, not five. A tier boundary decided in the
+fourth decimal is not a boundary, which is the report's own argument turned on itself. The whole top 10 collapses to just **three statistical tiers**: {#1}, {#2–#6}, {#7–#10}. So "ranked 2nd" and "ranked 6th" on LiveCodeBench code-gen are, on this evidence, the same result — five labs separated on the board by differences their shared 1,055-problem sample cannot establish.
 
 ## Honest caveats
 

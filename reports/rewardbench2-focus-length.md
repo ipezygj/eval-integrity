@@ -11,7 +11,7 @@ For a best-of-N preference benchmark (one correct completion among several), a t
 
 ## Result
 
-**Credit first:** RewardBench 2 *fixed* the v1 length degeneracy. A content-blind "pick the longest completion" baseline scores **21.3% overall — below the 24.8% chance rate.** The authors clearly corrected the aggregate.
+**Credit first:** on RewardBench 2 the v1 length degeneracy is gone. A content-blind "pick the longest completion" baseline scores **21.3% overall — below the 24.8% chance rate.** Whether that was deliberate is not something this measurement can say, and the paper does not discuss length bias or length control anywhere; the earlier version of this report asserted that the authors corrected it on purpose, which is not supported.
 
 **But the fix left an inverse confound on one subset.** On `Focus` (≈27% of the benchmark), the gold answer is on average *shorter* than the distractors, and a zero-parameter "**pick the shortest** completion" baseline scores **52.7% — 2.1× chance (z = 14.2, p ≪ 1e-6).** It holds under token count too (0.511). Math and Safety show weaker versions.
 
